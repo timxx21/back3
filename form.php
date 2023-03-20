@@ -7,6 +7,6 @@
     }
     ?>
   </select>
-  
+   <input name="email" />
   <input type="submit" value="ok" />
 </form>
