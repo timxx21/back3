@@ -8,7 +8,7 @@
 </head>
 
 <body style="font-size: 20px;">
-	<form action="form.php" method="post">
+	<form class = 'forma' action="form.php" method="post">
 		<p>
 			<label>Имя пользователя<br><br>
 				<input placeholder="Имя" type="text" name="name" value="">
