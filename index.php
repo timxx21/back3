@@ -1,79 +1,83 @@
-<?php
-// Отправляем браузеру правильную кодировку,
-// файл index.php должен быть в кодировке UTF-8 без BOM.
-header('Content-Type: text/html; charset=UTF-8');
-echo "<link rel='stylesheet' href='style.css'>";
-// В суперглобальном массиве $_SERVER PHP сохраняет некторые заголовки запроса HTTP
-// и другие сведения о клиненте и сервере, например метод текущего запроса $_SERVER['REQUEST_METHOD'].
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-// В суперглобальном массиве $_GET PHP хранит все параметры, переданные в текущем запросе через URL.
-if (!empty($_GET['save'])) {
-// Если есть параметр save, то выводим сообщение пользователю.
-print('Спасибо, результаты сохранены.');
-}
-// Включаем содержимое файла form.php.
-include('form.php');
-// Завершаем работу скрипта.
-exit();
-}
-// Иначе, если запрос был методом POST, т.е. нужно проверить данные и сохранить их в XML-файл.
+<!DOCTYPE html>
+<html lang="ru">
 
-// Проверяем ошибки.
-$errors = FALSE;
-if (empty($_POST['fio'])) {
-print('Заполните имя.<br/>');
-$errors = TRUE;
-}
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Веб 3</title>
+</head>
 
-if (empty($_POST['year']) || !is_numeric($_POST['year']) || !preg_match('/^\d+$/', $_POST['year'])) {
-print('Заполните год.<br/>');
-$errors = TRUE;
-}
+<body style="font-size: 20px;">
+	<form action="form.php" method="post">
+		<p>
+			<label>Имя пользователя<br><br>
+				<input placeholder="Имя" type="text" name="name" value="">
+			</label>
+		<p>
+			<label>e-mail пользователя<br><br>
+				<input placeholder="E-mail" type="text" name="email" value="">
+			</label>
+		</p>
+		<p>
+			<label>Год рождения<br><br>
+				<select name="year">
+					<option value="">Select...</option>
+					<?php
+					for ($i = 2014; $i >= 1900; --$i) {
+						echo "<option value='$i'>$i</option>";
+					}
+					?>
+				</select>
+			</label>
+		</p>
+		<p>Пол<br><br>
+			<label>
+				<input type="radio" name="gender" value="man">Мужской
+			</label>
+			<label>
+				<input type="radio" name="gender" value="woman">Женский
+			</label>
+		</p>
+		<p>Кол-во конечностей<br><br>
+			<label>
+				<input type="radio" name="numlimbs" value="1">1
+			</label>
+			<label>
+				<input type="radio" name="numlimbs" value="2">2
+			</label>
+			<label>
+				<input type="radio" name="numlimbs" value="3">3
+			</label>
+			<label>
+				<input type="radio" name="numlimbs" value="4">4
+			</label>
+		</p>
+		<p>
+			<label>Сверхспособности<br><br>
+				<select multiple name="super-powers[]">
+					<option value="immortality">Бессмертие</option>
+					<option value="walkthrough-walls">Прохождение сквозь стены</option>
+					<option value="levitation">Левитация</option>
+				</select>
+			</label>
+		</p>
+		<div>
+			<p>
+				<label>Биография<br><br>
+					<textarea placeholder="Расскажите о себе" name="biography"></textarea>
+				</label>
+			</p>
+		</div>
+		<p>
+			<label>
+				<input type="checkbox" name="agree">С контранктом ознакомлен
+				(а)
+			</label>
+		</p>
+		<p>
+			<input type="submit" value="Отправить">
+		</p>
+	</form>
+</body>
 
-if (empty($_POST['email'])) {
-print('Заполните email.<br/>');
-$errors = TRUE;
-}
-
-if ($errors) {
-// При наличии ошибок завершаем работу скрипта.
-exit();
-}
-
-// Сохранение в базу данных.
-
-$user = 'u52808';
-$pass = '9337244';
-$db = new PDO('mysql:host=localhost;dbname=u52808', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
-
-// Подготовленный запрос. Не именованные метки.
-try {
-$stmt = $db->prepare("INSERT INTO form SET name = ?, year = ?, email = ?");
-$stmt -> execute([$_POST['fio'], $_POST['year'], $_POST['email']]);
-}
-catch(PDOException $e){
-print('Error : ' . $e->getMessage());
-exit();
-}
-
-// stmt - это "дескриптор состояния".
-
-// Именованные метки.
-//$stmt = $db->prepare("INSERT INTO test (label,color) VALUES (:label,:color)");
-//$stmt -> execute(['label'=>'perfect', 'color'=>'green']);
-
-//Еще вариант
-/*$stmt = $db->prepare("INSERT INTO users (firstname, lastname, email) VALUES (:firstname, :lastname, :email)");
-$stmt->bindParam(':firstname', $firstname);
-$stmt->bindParam(':lastname', $lastname);
-$stmt->bindParam(':email', $email);
-$firstname = "John";
-$lastname = "Smith";
-$email = "john@test.com";
-$stmt->execute();
-*/
-
-// Делаем перенаправление.
-// Если запись не сохраняется, но ошибок не видно, то можно закомментировать эту строку чтобы увидеть ошибку.
-// Если ошибок при этом не видно, то необходимо настроить параметр display_errors для PHP.
-header('Location: ?save=1');
+</html>
