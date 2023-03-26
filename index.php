@@ -9,7 +9,9 @@
 </head>
 
 <body style="font-size: 14px;">
-	<div class="div1"><img style="float:left; margin:10px; width:100px; height:100px;" src="https://c.tenor.com/CTpG8Qr1A_AAAAAd/rick-roll-rick-astley.gif" alt="Тут должен быть рикролл">
+	<<div style ="width: 100%; background-color: #ccc; padding: 20px; height: 120px; margin-bottom: 30px;" >
+		<img style="float:left; margin:10px; width:100px; height:100px;" src="https://c.tenor.com/CTpG8Qr1A_AAAAAd/rick-roll-rick-astley.gif" 
+		     alt="Тут должен быть рикролл">
 			<div class="div2">Супер классный сайт</div>
 			</div>
 	<div style = "max-width:800px; background-color:#ccc; margin:  0 auto; margin-bottom: 20px; margin-top:20px; padding:10px;">
