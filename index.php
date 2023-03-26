@@ -9,7 +9,8 @@
 </head>
 
 <body style="font-size: 20px;">
-	<form class = 'forma' action="form.php" method="post">
+	<div class = "forma">
+	<form action="form.php" method="post">
 		<p>
 			<label>Имя пользователя<br><br>
 				<input placeholder="Имя" type="text" name="name" value="">
@@ -79,6 +80,7 @@
 			<input type="submit" value="Отправить">
 		</p>
 	</form>
+	</div>
 </body>
 
 </html>
