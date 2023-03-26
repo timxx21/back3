@@ -70,7 +70,7 @@
 		</div>
 		<p>
 			<label>
-				<input type="checkbox" name="agree">С контранктом ознакомлен
+				<input type="checkbox" name="agree">С контрактом ознакомлен
 				(а)
 			</label>
 		</p>
