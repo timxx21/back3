@@ -79,7 +79,7 @@
 			<label>
 				<input type="checkbox" name="agree">С контрактом ознакомлен
 				(а) 
-				<img style="float:left; margin:10px; width:100px; height:100px;" src="i.jpeg" 
+				<img style="float:left; margin:10px; width:80px; height:80px;" src="i.jpeg" 
 			</label>
 		</p>
 		<p>
