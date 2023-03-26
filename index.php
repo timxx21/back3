@@ -5,11 +5,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Веб 3</title>
-	<link rel="stylesheet" href="style.css"> </head>
+	
 </head>
 
-<body style="font-size: 20px;">
-	<div class = "forma">
+<body style="font-size: 14px;">
+	<div style = "max-width:800px; background-color:#ccc; margin:  0 auto; margin-bottom: 20px; margin-top:20px; padding:10px;">
 	<form action="form.php" method="post">
 		<p>
 			<label>Имя пользователя<br><br>
